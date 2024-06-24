@@ -1,0 +1,22 @@
+meta {
+  name: Crear un Poema
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/poems
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "title": "La canción del pirata",
+    "author": "José de Espronceda",
+    "genre": "Aventura",
+    "date": "1840-01-01",
+    "likes": 876,
+    "description": "Un poema que narra la vida y las aventuras de un pirata que vive sin arrepentimientos."
+  }
+}
