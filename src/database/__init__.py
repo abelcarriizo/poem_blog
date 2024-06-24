@@ -1,1 +1,2 @@
-from .user import USERS as usersDB
+from .usersDB import USERS as usersDB
+from .poemsDB import POEMS as poemsDB
