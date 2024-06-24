@@ -1,0 +1,21 @@
+meta {
+  name: Modificar un Usuario
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/user/2
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstname": "Pilo", 
+    "lastname": "Pilote", 
+    "alias": "pilopi", 
+    "email": "pilop@example.com", 
+    "password": "poli123"
+  }
+}

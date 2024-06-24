@@ -1,0 +1,21 @@
+meta {
+  name: Crear un usuario
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/users
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "firstname": "Pepe", 
+    "lastname": "Carrillo", 
+    "alias": "pepeca", 
+    "email": "pepec@example.com", 
+    "password": "juang123"
+  }
+}
