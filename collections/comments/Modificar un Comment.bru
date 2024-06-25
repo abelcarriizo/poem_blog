@@ -1,0 +1,19 @@
+meta {
+  name: Modificar un Comment
+  type: http
+  seq: 4
+}
+
+put {
+  url: {{URL}}/comment/5
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "author": "anam",
+    "date": "2023-07-22",
+    "description": "A reflective poem on the passage of time."
+  }
+}

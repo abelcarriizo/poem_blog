@@ -1,0 +1,19 @@
+meta {
+  name: Crear un Comentario
+  type: http
+  seq: 3
+}
+
+post {
+  url: {{URL}}/comments
+  body: json
+  auth: none
+}
+
+body:json {
+  {
+    "author": "carlosm",
+    "date": "2024-06-25",
+    "description": "A thought-provoking poem about dreams and aspirations."
+  }
+}
