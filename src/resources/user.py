@@ -1,34 +1,15 @@
-from flask import request
+from .. import db
+from src.models import userModel
+from flask import jsonify
 from flask_restful import Resource
-from src.database import usersDB
 
 class User(Resource):
     def get(self, id):
-        if int(id) in usersDB:
-            return usersDB[int(id)]
-        return '', 404
-    
-    def put(self, id):
-        if int(id) in usersDB:
-            user = usersDB[int(id)]
-            data = request.get_json()
-            user.update(data)
-            return user, 201
-        return '', 404
-    
-    def delete(self,id):
-        if int(id) in usersDB:
-            del usersDB[int(id)]
-            return '', 204
-        return '', 404
+        user = db.session.query(userModel).get_or_404(id)
+        return user.to_json()
 
 class Users(Resource):
     def get(self):
-        return usersDB
-    
-    def post(self):
-        id = int(max(usersDB.keys())) + 1
-        user = request.get_json()
-        usersDB[id] = user
-        return '', 201
+        users = db.session.query(userModel).all()
+        return jsonify([user.to_json() for user in users])
         
