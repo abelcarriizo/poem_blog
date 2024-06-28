@@ -28,8 +28,10 @@ def create_app():
     #Carga a la API los recursos
     #Todos los recursos
     api.add_resource(resources.UsersResource, '/users')
+    api.add_resource(resources.PoemsResource, '/poems')
     #Recursos por ID
     api.add_resource(resources.UserResource, '/user/<id>')
+    api.add_resource(resources.PoemResource, '/poem/<id>')
 
     api.init_app(app) #Cargar la aplicacion en la API de Flask Restful
 
