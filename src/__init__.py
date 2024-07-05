@@ -31,9 +31,14 @@ def create_app():
     api.add_resource(resources.PoemsResource, '/poems')
     api.add_resource(resources.CommentsResource, '/comments')
     #Recursos por ID
-    api.add_resource(resources.UserResource, '/user/<id>')
-    api.add_resource(resources.PoemResource, '/poem/<id>')
-    api.add_resource(resources.CommentResource, '/comment/<id>')
+    api.add_resource(resources.CommentResource, '/comment/<int:id>')
+    api.add_resource(resources.FollowResource, '/follow/<int:user_id>/<int:follower_id>')
+    api.add_resource(resources.FollowerResource, '/followers/<int:user_id>')
+    api.add_resource(resources.FollowedResource, '/followed/<int:user_id>')
+    api.add_resource(resources.LikeResource, '/like/<poem_id>/<user_id>')
+    api.add_resource(resources.LikesResource, '/likes/<poem_id>')
+    api.add_resource(resources.PoemResource, '/poem/<int:id>')
+    api.add_resource(resources.UserResource, '/user/<int:id>')
 
     api.init_app(app) #Cargar la aplicacion en la API de Flask Restful
 
