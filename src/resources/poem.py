@@ -26,7 +26,6 @@ class Poem(Resource):
 class Poems(Resource):
     def get(self):
         poems = db.session.query(PoemModel).all()
-        print(poems)
         return jsonify([poem.to_json() for poem in poems])
 
     def post(self):
