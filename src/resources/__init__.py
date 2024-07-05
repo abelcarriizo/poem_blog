@@ -1,7 +1,11 @@
-from .user import User as UserResource
-from .user import Users as UsersResource
-from .poem import Poem as PoemResource
-from .poem import Poems as PoemsResource
 from .comment import Comment as CommentResource
 from .comment import Comments as CommentsResource
-
+from .followers import Follow as FollowResource
+from .followers import Follower as FollowerResource
+from .followers import Followed as FollowedResource
+from .likes import Like as LikeResource
+from .likes import Likes as LikesResource
+from .poem import Poem as PoemResource
+from .poem import Poems as PoemsResource
+from .user import User as UserResource
+from .user import Users as UsersResource
