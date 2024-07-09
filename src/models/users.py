@@ -7,6 +7,7 @@ class User(db.Model):
     firstname = db.Column(db.String(10), nullable=False)
     lastname = db.Column(db.String(15), nullable=False)
     username = db.Column(db.String(50), unique=True, nullable=False)
+    gender = db.Column(db.String(10), nullable=False)
     description = db.Column(db.String(100), nullable=False)
     email = db.Column(db.String(40), nullable=False)
     password = db.Column(db.String(128), nullable=False)
@@ -28,6 +29,7 @@ class User(db.Model):
             "firstname": self.firstname,
             "lastname": self.lastname,
             "username": self.username,
+            "gender": self.gender,
             "description": self.description,
             "email": self.email,
         }
@@ -40,7 +42,8 @@ class User(db.Model):
         firstname = user_json.get("firstname")
         lastname = user_json.get("lastname")
         username = user_json.get("username")
+        gender = user_json.get("gender")
         description = user_json.get("description")
         email = user_json.get("email")
         password = user_json.get("password")
-        return User(id=id, firstname=firstname, lastname=lastname, username=username, description=description, email=email, password=password)
+        return User(id=id, firstname=firstname, lastname=lastname, username=username, gender=gender, description=description, email=email, password=password)
