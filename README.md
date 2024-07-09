@@ -69,13 +69,16 @@ El script `install.sh` creará automáticamente un archivo `.env` para configura
 
 ### Comentarios
 
-- **GET /comments/poem/<poem_id>**: Obtiene todos los comentarios de un poema.
-- **POST /comments/poem/<poem_id>**: Crea un nuevo comentario en un poema.
+- **GET /comment/<comment_id>**: Obtiene un comentario por ID.
+- **GET /comments/poem/<poem_id>>**: Obtiene todos los comentarios de un poema.
+- **POST /comments**: Crea un nuevo comentario en un poema.
+- **PUT /comment/<comment_id>**: Actualiza un comentario existente.
 - **DELETE /comments/<comment_id>**: Elimina un comentario.
 
 ### Seguidores
 
 - **GET /followers/user/<user_id>**: Obtiene los seguidores de un usuario.
+- **GET /followed/user/<user_id>**: Obtiene los usuario que sigue de un usuario.
 - **POST /follow/user/<user_id>/follower/<follower_id>**: Un usuario sigue a otro usuario.
 - **DELETE /follow/user/<user_id>/follower/<follower_id>**: Un usuario deja de seguir a otro usuario.
 
