@@ -1,6 +1,6 @@
 from .. import db
 from src.models import UserModel
-from flask import jsonify
+from flask import jsonify, request
 from flask_restful import Resource
 
 class Follow(Resource):
@@ -32,12 +32,42 @@ class Follow(Resource):
 
 class Follower(Resource):
     def get(self, user_id):
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 10, type=int)
+        
         user = db.session.query(UserModel).get_or_404(user_id)
-        followers = user.followers.all()  # Assuming you have a 'followers' relationship in User model
-        return jsonify([follower.to_json() for follower in followers])
+        followers_pagination = user.followers.paginate(page=page, per_page=per_page, error_out=False)
+        
+        data = {
+            'total': followers_pagination.total,
+            'pages': followers_pagination.pages,
+            'current_page': followers_pagination.page,
+            'next_page': followers_pagination.next_num,
+            'prev_page': followers_pagination.prev_num,
+            'has_next': followers_pagination.has_next,
+            'has_prev': followers_pagination.has_prev,
+            'items': [follower.to_json() for follower in followers_pagination.items]
+        }
+        
+        return jsonify(data)
 
 class Followed(Resource):
     def get(self, user_id):
+        page = request.args.get('page', 1, type=int)
+        per_page = request.args.get('per_page', 10, type=int)
+        
         user = db.session.query(UserModel).get_or_404(user_id)
-        followed_users = user.followed.all()  # Assuming you have a 'followed' relationship in User model
-        return jsonify([followed.to_json() for followed in followed_users])
+        followed_pagination = user.followed.paginate(page=page, per_page=per_page, error_out=False)
+        
+        data = {
+            'total': followed_pagination.total,
+            'pages': followed_pagination.pages,
+            'current_page': followed_pagination.page,
+            'next_page': followed_pagination.next_num,
+            'prev_page': followed_pagination.prev_num,
+            'has_next': followed_pagination.has_next,
+            'has_prev': followed_pagination.has_prev,
+            'items': [followed.to_json() for followed in followed_pagination.items]
+        }
+        
+        return jsonify(data)
