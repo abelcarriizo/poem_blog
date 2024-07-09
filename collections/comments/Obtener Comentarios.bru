@@ -5,7 +5,11 @@ meta {
 }
 
 get {
-  url: {{URL}}/comments
+  url: {{URL}}/comments/2?page=1
   body: none
   auth: none
+}
+
+params:query {
+  page: 1
 }
