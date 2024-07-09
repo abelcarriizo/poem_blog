@@ -13,10 +13,6 @@ def create_app():
 
     load_dotenv() #Carga las variables de entorno
 
-    #Si no existe el archivo de base de datos crearlo (solo válido si se utiliza SQLite)
-    if not os.path.exists(os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME')):
-        os.mknod(os.getenv('DATABASE_PATH')+os.getenv('DATABASE_NAME'))
-
     #Configuracion de Base de Datos
     app.config['SQLALCHEMY_TRACK_MODIFICATIONS'] = False
     app.config['SQLALCHEMY_DATABASE_URI'] = f'mysql+mysqlconnector://{os.getenv('DATABASE_USER')}:{os.getenv('DATABASE_PASSWORD')}@localhost/{os.getenv('DATABASE_NAME')}'
@@ -29,9 +25,9 @@ def create_app():
     #Todos los recursos
     api.add_resource(resources.UsersResource, '/users')
     api.add_resource(resources.PoemsResource, '/poems')
-    api.add_resource(resources.CommentsResource, '/comments')
     #Recursos por ID
     api.add_resource(resources.CommentResource, '/comment/<int:id>')
+    api.add_resource(resources.CommentsResource, '/comments', '/comments/<int:poem_id>')
     api.add_resource(resources.FollowResource, '/follow/<int:user_id>/<int:follower_id>')
     api.add_resource(resources.FollowerResource, '/followers/<int:user_id>')
     api.add_resource(resources.FollowedResource, '/followed/<int:user_id>')
