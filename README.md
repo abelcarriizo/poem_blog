@@ -25,6 +25,10 @@ git clone https://github.com/tu_usuario/poem_blog.git
 ./install.sh
 ```
 
+> [!WARNING]
+> - **Base de Datos**: Asegúrate de utilizar MariaDB para evitar problemas de compatibilidad. Si tienes otra base de datos puedes cambiar la configuracion a la conexion que se encuentra en ```__init__.py```.
+> - **Creación de Base de Datos**: Debes crear la base de datos `poem_blog` manualmente o importar la base de datos desde el archivo `src/database/poem_blog.sql`.
+
 3. Crea la base de datos en MariaDB:
 
 ```sql
@@ -88,8 +92,6 @@ El script `install.sh` creará automáticamente un archivo `.env` para configura
 - **DELETE /like/poem/<poem_id>/user/<user_id>**: Un usuario quita "me gusta" a un poema.
 - **GET /likes/poem/<poem_id>**: Obtiene todos los "me gusta" de un poema.
 
-> **⚠️ Advertencia:**
-> - **Base de Datos**: Asegúrate de utilizar MariaDB para evitar problemas de compatibilidad. La conexión puede no funcionar correctamente con MySQL.
-> - **Creación de Base de Datos**: Debes crear la base de datos `poem_blog` manualmente o importar la base de datos desde el archivo `src/database/poem_blog.sql`.
+
 
 
