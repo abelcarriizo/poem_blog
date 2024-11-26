@@ -19,6 +19,11 @@ Este proyecto es una API para un blog de poemas, donde los usuarios pueden publi
 git clone https://github.com/tu_usuario/poem_blog.git
 ```
 
+> Los scripts deben tener permiso de ejecucion.
+```sh
+chmod +x <scripts>
+```
+
 2. Ejecuta el script de instalación:
 
 ```sh
