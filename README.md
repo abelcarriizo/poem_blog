@@ -2,6 +2,11 @@
 
 ## Descripción
 
+Para poder enviar correos debes seguir estos pasos en tu cuenta de google:
+1. Gestionar tu cuenta de google
+2. Dirigirte al apartadod de seguridad
+3. Acceder a la seccion "Acceso de aplicaciones menos seguras" y habilitarla
+
 Este proyecto es una API para un blog de poemas, donde los usuarios pueden publicar poemas, comentar en los poemas de otros usuarios, seguir a otros usuarios y dar "me gusta" a los poemas.
 
 ## Requisitos
